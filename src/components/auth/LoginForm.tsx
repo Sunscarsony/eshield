@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const [userRole, setUserRole] = useState("user");
@@ -20,11 +21,11 @@ const LoginForm = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      
+
       // Navigate to appropriate dashboard based on role
       if (userRole === "user") {
         navigate("/user-dashboard");
@@ -33,7 +34,7 @@ const LoginForm = () => {
       } else if (userRole === "admin") {
         navigate("/admin-dashboard");
       }
-      
+
       toast({
         title: "Login successful",
         description: `Welcome back to e-Shielded!`,
@@ -52,7 +53,7 @@ const LoginForm = () => {
           AI-powered hiring platform
         </p>
       </div>
-      
+
       <Card className="w-full">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center">Sign In</CardTitle>
@@ -69,7 +70,7 @@ const LoginForm = () => {
                 <TabsTrigger value="admin">Admin</TabsTrigger>
               </TabsList>
             </Tabs>
-            
+
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
@@ -106,9 +107,9 @@ const LoginForm = () => {
         <CardFooter className="flex justify-center">
           <div className="text-sm text-muted-foreground">
             Don't have an account?{" "}
-            <a href="/register" className="text-eshield-600 hover:text-eshield-800 font-medium">
+            <Link to="/register" className="text-eshield-600 hover:text-eshield-800 font-medium">
               Sign Up
-            </a>
+            </Link>
           </div>
         </CardFooter>
       </Card>

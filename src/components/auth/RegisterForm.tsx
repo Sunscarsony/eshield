@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const RegisterForm = () => {
   const [userRole, setUserRole] = useState("user");
@@ -21,7 +22,7 @@ const RegisterForm = () => {
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (password !== confirmPassword) {
       toast({
         title: "Passwords don't match",
@@ -30,14 +31,14 @@ const RegisterForm = () => {
       });
       return;
     }
-    
+
     setIsLoading(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
       navigate("/verification");
-      
+
       toast({
         title: "Registration successful",
         description: "We've sent a verification code to your email.",
@@ -82,7 +83,7 @@ const RegisterForm = () => {
           AI-powered hiring platform
         </p>
       </div>
-      
+
       <Card className="w-full">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center">Create Account</CardTitle>
@@ -99,7 +100,7 @@ const RegisterForm = () => {
                 <TabsTrigger value="admin">Admin</TabsTrigger>
               </TabsList>
             </Tabs>
-            
+
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="name">{getNameLabel()}</Label>
@@ -151,9 +152,9 @@ const RegisterForm = () => {
         <CardFooter className="flex justify-center">
           <div className="text-sm text-muted-foreground">
             Already have an account?{" "}
-            <a href="/login" className="text-eshield-600 hover:text-eshield-800 font-medium">
+            <Link to="/login" className="text-eshield-600 hover:text-eshield-800 font-medium">
               Sign In
-            </a>
+            </Link>
           </div>
         </CardFooter>
       </Card>
